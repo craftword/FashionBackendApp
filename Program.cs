@@ -17,10 +17,11 @@ namespace FashionBackendApp
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+           Host.CreateDefaultBuilder(args)
+           .ConfigureWebHostDefaults(webBuilder => {
+               webBuilder.UseSetting(
+                       WebHostDefaults.PreventHostingStartupKey, "true")
+                   .UseStartup<Startup>();
+           });
     }
 }
